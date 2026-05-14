@@ -11,7 +11,7 @@ const getOAuth2Client = () => {
     const oauth2Client = new google.auth.OAuth2(
         process.env.GDRIVE_CLIENT_ID,
         process.env.GDRIVE_CLIENT_SECRET,
-        'http://localhost:5000/oauth2callback'
+        process.env.REDIRECT_URI || 'http://localhost:5000/oauth2callback'
     );
 
     // Set the refresh token so it can auto-generate access tokens
