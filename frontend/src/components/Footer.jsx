@@ -15,15 +15,15 @@ const Footer = () => {
     ];
 
     return (
-        <footer className="py-20 relative overflow-hidden bg-dark border-t border-white/5">
+        <footer className="py-20 relative overflow-hidden border-t" style={{ background: 'var(--bg-main)', borderColor: 'var(--border-subtle)' }}>
             <div className="max-w-7xl mx-auto px-6 relative z-10">
                 <div className="flex flex-col md:flex-row justify-between items-center gap-10 md:gap-12">
                     {/* Brand */}
                     <div className="text-center md:text-left">
-                        <h2 className="text-2xl md:text-3xl font-black mb-3 md:mb-4">
+                        <h2 className="text-2xl md:text-3xl font-black mb-3 md:mb-4" style={{ color: 'var(--text-main)' }}>
                             SAMPRIT <span className="gradient-text">GHOSH</span>
                         </h2>
-                        <p className="text-sm md:text-base text-gray-500 max-w-xs mx-auto md:mx-0">
+                        <p className="text-sm md:text-base max-w-xs mx-auto md:mx-0" style={{ color: 'var(--text-muted)' }}>
                             Designing and building high-performance digital experiences with precision and passion.
                         </p>
                     </div>
@@ -45,7 +45,8 @@ const Footer = () => {
                     {/* Back to top */}
                     <button 
                         onClick={scrollToTop}
-                        className="group flex items-center gap-2 md:gap-3 text-xs md:text-sm font-bold text-gray-500 hover:text-white transition-colors"
+                        className="group flex items-center gap-2 md:gap-3 text-xs md:text-sm font-bold transition-colors"
+                        style={{ color: 'var(--text-muted)' }}
                     >
                         BACK TO TOP 
                         <div className="w-8 h-8 md:w-10 md:h-10 glass rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-all">
@@ -55,14 +56,14 @@ const Footer = () => {
                 </div>
 
                 {/* Bottom Bar */}
-                <div className="mt-16 md:mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 md:gap-4">
-                    <p className="text-xs md:text-sm text-gray-600 text-center md:text-left">
-                        &copy; {new Date().getFullYear()} <span className="text-gray-400">Samprit Ghosh</span>. Developed with <span className="text-primary">❤</span> and MERN Stack.
+                <div className="mt-16 md:mt-20 pt-8 border-t flex flex-col md:flex-row justify-between items-center gap-6 md:gap-4" style={{ borderColor: 'var(--border-subtle)' }}>
+                    <p className="text-xs md:text-sm text-center md:text-left" style={{ color: 'var(--text-muted)' }}>
+                        &copy; {new Date().getFullYear()} <span style={{ color: 'var(--text-main)' }}>Samprit Ghosh</span>. Developed with <span className="text-primary">❤</span> and MERN Stack.
                     </p>
-                    <div className="flex gap-6 md:gap-8 text-[10px] md:text-xs font-bold text-gray-700 tracking-widest uppercase">
+                    <div className="flex gap-6 md:gap-8 text-[10px] md:text-xs font-bold tracking-widest uppercase" style={{ color: 'var(--text-muted)' }}>
                         <a href="#home" className="hover:text-primary transition-colors">Privacy</a>
                         <a href="#home" className="hover:text-primary transition-colors">Terms</a>
-                        <a href="/admin/login" className="hover:text-white transition-colors">Admin Login</a>
+                        <a href="/admin/login" className="hover:text-primary transition-colors">Admin Login</a>
                     </div>
                 </div>
             </div>

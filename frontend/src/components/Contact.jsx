@@ -4,7 +4,7 @@ import { Mail, MapPin, User, Send, Phone, Globe, Users, MessageCircle, Camera, S
 
 const Contact = () => {
     return (
-        <section id="contact" className="py-28 relative overflow-hidden bg-dark">
+        <section id="contact" className="py-28 relative overflow-hidden" style={{ background: 'var(--bg-main)' }}>
             {/* Background elements */}
             <div className="absolute top-0 left-0 w-full h-full grid-overlay opacity-20 pointer-events-none" />
             <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[500px] h-[500px] rounded-full pointer-events-none"
@@ -14,7 +14,7 @@ const Contact = () => {
                 <div className="text-center mb-16 md:mb-20">
                     <div className="section-pill mx-auto w-fit">Get In Touch</div>
                     <h2 className="text-3xl md:text-5xl font-black">Let's Create <span className="gradient-text">Something Great</span></h2>
-                    <p className="mt-4 max-w-xl mx-auto text-sm md:text-base text-gray-500">
+                    <p className="mt-4 max-w-xl mx-auto text-sm md:text-base" style={{ color: 'var(--text-muted)' }}>
                         Open for collaborations, interesting projects, or just a friendly developer chat.
                     </p>
                 </div>
@@ -27,50 +27,50 @@ const Contact = () => {
                         transition={{ duration: 0.8 }}
                         className="w-full lg:w-2/5 space-y-6"
                     >
-                        <div className="glass p-8 rounded-2xl group hover:border-primary/30 hover:bg-[#0c121d] transition-all duration-300 card-glow">
+                        <div className="glass p-8 rounded-2xl group transition-all duration-300 card-glow">
                             <div className="flex items-center gap-6">
                                 <div className="p-4 rounded-xl text-white bg-gradient-to-br from-primary to-accent group-hover:scale-110 transition-transform shadow-[0_0_15px_rgba(249,115,22,0.3)]">
                                     <User size={24} />
                                 </div>
                                 <div>
-                                    <h4 className="text-lg font-bold">Name</h4>
-                                    <p className="text-gray-400 group-hover:text-white transition-colors">Samprit Ghosh</p>
+                                    <h4 className="text-lg font-bold" style={{ color: 'var(--text-main)' }}>Name</h4>
+                                    <p style={{ color: 'var(--text-muted)' }}>Samprit Ghosh</p>
                                 </div>
                             </div>
                         </div>
 
-                        <div className="glass p-8 rounded-2xl group hover:border-secondary/30 hover:bg-[#0c121d] transition-all duration-300 card-glow">
+                        <div className="glass p-8 rounded-2xl group transition-all duration-300 card-glow">
                             <div className="flex items-center gap-6">
                                 <div className="p-4 rounded-xl text-white bg-gradient-to-br from-secondary to-secondary-dark group-hover:scale-110 transition-transform shadow-[0_0_15px_rgba(6,182,212,0.3)]">
                                     <MapPin size={24} />
                                 </div>
                                 <div>
-                                    <h4 className="text-lg font-bold">Location</h4>
-                                    <p className="text-gray-400 group-hover:text-white transition-colors">Kolkata, West Bengal, India</p>
+                                    <h4 className="text-lg font-bold" style={{ color: 'var(--text-main)' }}>Location</h4>
+                                    <p style={{ color: 'var(--text-muted)' }}>Kolkata, West Bengal, India</p>
                                 </div>
                             </div>
                         </div>
 
-                        <div className="glass p-8 rounded-2xl group hover:border-blue-400/30 hover:bg-[#0c121d] transition-all duration-300 card-glow">
+                        <div className="glass p-8 rounded-2xl group transition-all duration-300 card-glow">
                             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5 sm:gap-6">
                                 <div className="p-4 rounded-xl text-white bg-gradient-to-br from-purple-500 to-pink-800 group-hover:scale-110 transition-transform shadow-[0_0_15px_rgba(168,85,247,0.3)]">
                                     <Mail size={24} />
                                 </div>
                                 <div>
-                                    <h4 className="text-lg font-bold">Email</h4>
-                                    <p className="text-gray-400 break-all group-hover:text-white transition-colors">sampritghosh310@gmail.com</p>
+                                    <h4 className="text-lg font-bold" style={{ color: 'var(--text-main)' }}>Email</h4>
+                                    <p className="break-all" style={{ color: 'var(--text-muted)' }}>sampritghosh310@gmail.com</p>
                                 </div>
                             </div>
                         </div>
-                        <div className="glass p-8 rounded-2xl group hover:border-blue-500/30 hover:bg-[#0c121d] transition-all duration-300 card-glow">
+                        <div className="glass p-8 rounded-2xl group transition-all duration-300 card-glow">
                             <div className="flex flex-col gap-6">
                                 <div className="flex items-center gap-6">
                                     <div className="p-4 rounded-xl text-white bg-gradient-to-br from-blue-600 to-cyan-500 group-hover:scale-110 transition-transform shadow-[0_0_15px_rgba(37,99,235,0.3)]">
                                         <Share2 size={24} />
                                     </div>
                                     <div>
-                                        <h4 className="text-lg font-bold">Social Connect</h4>
-                                        <p className="text-gray-400 group-hover:text-white transition-colors">Let's connect digitally</p>
+                                        <h4 className="text-lg font-bold" style={{ color: 'var(--text-main)' }}>Social Connect</h4>
+                                        <p style={{ color: 'var(--text-muted)' }}>Let's connect digitally</p>
                                     </div>
                                 </div>
                                 <div className="flex flex-wrap gap-4 pt-2">
@@ -120,40 +120,44 @@ const Contact = () => {
                             
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                                 <div className="space-y-2">
-                                    <label className="block text-sm font-bold text-gray-400 uppercase tracking-widest">Your Name</label>
+                                    <label className="block text-sm font-bold uppercase tracking-widest" style={{ color: 'var(--text-muted)' }}>Your Name</label>
                                     <input 
                                         type="text" 
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-gray-700"
+                                        className="w-full bg-white dark:bg-white/5 border-2 border-black dark:border-white/10 rounded-xl px-6 py-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-gray-400 dark:placeholder:text-gray-700 shadow-md"
+                                        style={{ color: 'var(--text-main)' }}
                                         placeholder="Enter your name"
                                     />
                                 </div>
                                 <div className="space-y-2">
-                                    <label className="block text-sm font-bold text-gray-400 uppercase tracking-widest">Email Address</label>
+                                    <label className="block text-sm font-bold uppercase tracking-widest" style={{ color: 'var(--text-muted)' }}>Email Address</label>
                                     <input 
                                         type="email" 
-                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all placeholder:text-gray-700"
+                                        className="w-full bg-white dark:bg-white/5 border-2 border-black dark:border-white/10 rounded-xl px-6 py-4 focus:ring-2 focus:ring-secondary focus:border-transparent outline-none transition-all placeholder:text-gray-400 dark:placeholder:text-gray-700 shadow-md"
+                                        style={{ color: 'var(--text-main)' }}
                                         placeholder="Enter your email"
                                     />
                                 </div>
                             </div>
                             <div className="space-y-2">
-                                <label className="block text-sm font-bold text-gray-400 uppercase tracking-widest">Subject</label>
+                                <label className="block text-sm font-bold uppercase tracking-widest" style={{ color: 'var(--text-muted)' }}>Subject</label>
                                 <input 
                                     type="text" 
-                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-gray-700"
+                                    className="w-full bg-white dark:bg-white/5 border-2 border-black dark:border-white/10 rounded-xl px-6 py-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-gray-400 dark:placeholder:text-gray-700 shadow-md"
+                                    style={{ color: 'var(--text-main)' }}
                                     placeholder="What's this about?"
                                 />
                             </div>
                             <div className="space-y-2">
-                                <label className="block text-sm font-bold text-gray-400 uppercase tracking-widest">Your Message</label>
+                                <label className="block text-sm font-bold uppercase tracking-widest" style={{ color: 'var(--text-muted)' }}>Your Message</label>
                                 <textarea 
                                     rows="5"
-                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-gray-700 resize-none"
+                                    className="w-full bg-white dark:bg-white/5 border-2 border-black dark:border-white/10 rounded-xl px-6 py-4 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-gray-400 dark:placeholder:text-gray-700 resize-none shadow-md"
+                                    style={{ color: 'var(--text-main)' }}
                                     placeholder="Write your message here..."
                                 />
                             </div>
-                            <button type="submit" className="btn-primary w-full flex items-center justify-center gap-3 py-5 text-lg font-black group">
-                                <Send size={22} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" /> 
+                            <button type="submit" className="btn-primary w-full flex items-center justify-center gap-3 py-5 text-lg font-black !shadow-none !transform-none">
+                                <Send size={22} /> 
                                 SEND
                             </button>
                         </form>

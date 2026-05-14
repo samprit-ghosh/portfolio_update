@@ -6,13 +6,13 @@ const Skills = () => {
     const { items: skills } = useSelector((state) => state.skills);
 
     const getBarColor = (pct) => {
-        if (pct >= 85) return 'linear-gradient(90deg, #f97316, #fbbf24)';
-        if (pct >= 65) return 'linear-gradient(90deg, #06b6d4, #6366f1)';
-        return 'linear-gradient(90deg, #6366f1, #ec4899)';
+        if (pct >= 85) return 'linear-gradient(90deg, var(--primary), var(--secondary))';
+        if (pct >= 65) return 'linear-gradient(90deg, var(--secondary), var(--primary))';
+        return 'linear-gradient(90deg, var(--primary), var(--secondary))';
     };
 
     return (
-        <section id="skills" className="py-28 relative overflow-hidden" style={{ background: '#080c10' }}>
+        <section id="skills" className="py-28 relative overflow-hidden" style={{ background: 'var(--bg-main)' }}>
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full pointer-events-none"
                 style={{ background: 'radial-gradient(circle, rgba(249,115,22,0.04) 0%, transparent 70%)' }} />
 
@@ -20,7 +20,7 @@ const Skills = () => {
                 <div className="text-center mb-16 md:mb-20">
                     <div className="section-pill mx-auto w-fit">Expertise</div>
                     <h2 className="text-3xl md:text-5xl font-black">Skills & <span className="gradient-text">Technologies</span></h2>
-                    <p className="mt-4 max-w-xl mx-auto text-sm md:text-base" style={{ color: 'rgba(255,255,255,0.45)' }}>
+                    <p className="mt-4 max-w-xl mx-auto text-sm md:text-base" style={{ color: 'var(--text-muted)' }}>
                         Expertise across the full development lifecycle, specializing in modern web ecosystems.
                     </p>
                 </div>
@@ -47,16 +47,16 @@ const Skills = () => {
                                             <img src={skill.image} alt={skill.name} className="w-full h-full object-contain" referrerPolicy="no-referrer" />
                                         </div>
                                     )}
-                                    <h3 className="text-lg font-bold text-white">{skill.name}</h3>
+                                    <h3 className="text-lg font-bold" style={{ color: 'var(--text-main)' }}>{skill.name}</h3>
                                 </div>
-                                <span className="text-3xl font-black tabular-nums" style={{ color: skill.percentage >= 85 ? '#f97316' : '#06b6d4' }}>
+                                <span className="text-3xl font-black tabular-nums" style={{ color: skill.percentage >= 85 ? 'var(--primary)' : 'var(--secondary)' }}>
                                     {skill.percentage}
-                                    <span className="text-lg font-bold" style={{ color: 'rgba(255,255,255,0.3)' }}>%</span>
+                                    <span className="text-lg font-bold" style={{ color: 'var(--text-muted)', opacity: 0.5 }}>%</span>
                                 </span>
                             </div>
 
                             {/* Track */}
-                            <div className="h-2.5 rounded-full overflow-hidden relative" style={{ background: 'rgba(255,255,255,0.06)' }}>
+                            <div className="h-2.5 rounded-full overflow-hidden relative" style={{ background: 'var(--border-subtle)' }}>
                                 <motion.div
                                     initial={{ width: 0 }}
                                     whileInView={{ width: `${skill.percentage}%` }}
@@ -73,9 +73,9 @@ const Skills = () => {
                             </div>
 
                             {/* Level label */}
-                            <div className="mt-3 flex justify-between text-xs" style={{ color: 'rgba(255,255,255,0.3)' }}>
+                            <div className="mt-3 flex justify-between text-xs" style={{ color: 'var(--text-muted)' }}>
                                 <span>Beginner</span>
-                                <span style={{ color: skill.percentage >= 85 ? 'rgba(249,115,22,0.7)' : 'rgba(6,182,212,0.7)' }}>
+                                <span style={{ color: skill.percentage >= 85 ? 'var(--primary)' : 'var(--secondary)' }}>
                                     {skill.percentage >= 85 ? 'Expert' : skill.percentage >= 65 ? 'Advanced' : 'Intermediate'}
                                 </span>
                             </div>

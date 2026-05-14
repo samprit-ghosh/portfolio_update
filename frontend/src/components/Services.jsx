@@ -13,7 +13,7 @@ const services = [
 
 const Services = () => {
     return (
-        <section id="services" className="py-28 relative overflow-hidden" style={{ background: '#0f1620' }}>
+        <section id="services" className="py-28 relative overflow-hidden" style={{ background: 'var(--bg-main)' }}>
             <div className="absolute inset-0 grid-overlay opacity-30" />
             <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full pointer-events-none"
                 style={{ background: 'radial-gradient(circle, rgba(249,115,22,0.06) 0%, transparent 70%)' }} />
@@ -22,7 +22,7 @@ const Services = () => {
                 <div className="text-center mb-16 md:mb-20">
                     <div className="section-pill mx-auto w-fit">What I Do</div>
                     <h2 className="text-3xl md:text-5xl font-black">Core <span className="gradient-text">Services</span></h2>
-                    <p className="mt-4 max-w-xl mx-auto text-sm md:text-base" style={{ color: 'rgba(255,255,255,0.45)' }}>
+                    <p className="mt-4 max-w-xl mx-auto text-sm md:text-base" style={{ color: 'var(--text-muted)' }}>
                         End-to-end solutions that drive real business outcomes.
                     </p>
                 </div>
@@ -49,8 +49,8 @@ const Services = () => {
                                 style={{ background: `${s.color}18`, border: `1px solid ${s.color}30` }}>
                                 <s.icon size={26} style={{ color: s.color }} />
                             </div>
-                            <h3 className="text-xl font-bold mb-3 text-white">{s.title}</h3>
-                            <p className="text-sm leading-relaxed" style={{ color: 'rgba(255,255,255,0.5)' }}>{s.desc}</p>
+                            <h3 className="text-xl font-bold mb-3" style={{ color: 'var(--text-main)' }}>{s.title}</h3>
+                            <p className="text-sm leading-relaxed" style={{ color: 'var(--text-muted)' }}>{s.desc}</p>
                         </motion.div>
                     ))}
                 </div>

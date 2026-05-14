@@ -11,7 +11,7 @@ const stats = [
 
 const About = () => {
     return (
-        <section id="about" className="py-28 relative overflow-hidden" style={{ background: '#080c10' }}>
+        <section id="about" className="py-28 relative overflow-hidden" style={{ background: 'var(--bg-main)' }}>
             {/* Ambient glow */}
             <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full pointer-events-none"
                 style={{ background: 'radial-gradient(circle, rgba(6,182,212,0.07) 0%, transparent 70%)' }} />
@@ -35,27 +35,23 @@ const About = () => {
                         <div className="relative w-64 h-64 md:w-80 md:h-80">
                             {/* Orange ring */}
                             <div className="absolute inset-0 rounded-2xl rotate-6"
-                                style={{ background: 'linear-gradient(135deg, #f97316, #06b6d4)', padding: '2px' }}>
-                                <div className="w-full h-full rounded-2xl" style={{ background: '#080c10' }} />
+                                style={{ background: 'linear-gradient(135deg, var(--primary), var(--secondary))', padding: '2px' }}>
+                                <div className="w-full h-full rounded-2xl" style={{ background: 'var(--bg-main)' }} />
                             </div>
                             {/* Photo */}
                             <div className="relative z-10 w-full h-full rounded-2xl overflow-hidden border-2"
-                                style={{ borderColor: 'rgba(249,115,22,0.3)' }}>
+                                style={{ border: '1px solid var(--primary)' }}>
                                 <img src="images/my photo.jpg" alt="Samprit Ghosh"
                                     className="w-full h-full object-cover" />
-                                {/* Overlay shimmer */}
-                                <div className="absolute inset-0"
-                                    style={{ background: 'linear-gradient(135deg, rgba(249,115,22,0.1) 0%, transparent 50%, rgba(6,182,212,0.1) 100%)' }} />
                             </div>
                             {/* Float badge */}
                             <motion.div
                                 animate={{ y: [0, -8, 0] }}
                                 transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-                                className="absolute -bottom-3 -right-3 md:-bottom-5 md:-right-5 z-20 glass px-4 py-2 md:px-5 md:py-3 rounded-xl"
-                                style={{ border: '1px solid rgba(249,115,22,0.3)' }}
+                                className="absolute -bottom-3 -right-3 md:-bottom-5 md:-right-5 z-20 glass px-4 py-2 md:px-5 md:py-3 rounded-xl border border-primary"
                             >
                                 <p className="text-xl md:text-2xl font-black gradient-text">2+</p>
-                                <p className="text-[10px] md:text-xs" style={{ color: 'rgba(255,255,255,0.5)' }}>Years Exp.</p>
+                                <p className="text-[10px] md:text-xs font-bold" style={{ color: 'var(--text-main)' }}>Years Exp.</p>
                             </motion.div>
                         </div>
                     </motion.div>
@@ -67,11 +63,11 @@ const About = () => {
                         transition={{ duration: 1, ease: 'easeOut', delay: 0.2 }}
                         className="w-full lg:w-3/5 text-center lg:text-left"
                     >
-                        <p className="text-base md:text-lg leading-relaxed mb-6 px-2 md:px-0" style={{ color: 'rgba(255,255,255,0.6)' }}>
-                            I'm a <strong className="text-white">Full Stack Developer</strong> with 2+ years of hands-on experience building everything from e-commerce platforms to AI-powered web apps. I thrive at the intersection of engineering and design — crafting products that are as fast as they are beautiful.
+                        <p className="text-base md:text-lg leading-relaxed mb-6 px-2 md:px-0" style={{ color: 'var(--text-muted)' }}>
+                            I'm a <strong style={{ color: 'var(--text-main)' }}>Full Stack Developer</strong> with 2+ years of hands-on experience building everything from e-commerce platforms to AI-powered web apps. I thrive at the intersection of engineering and design — crafting products that are as fast as they are beautiful.
                         </p>
-                        <p className="text-lg leading-relaxed mb-10" style={{ color: 'rgba(255,255,255,0.6)' }}>
-                            My stack spans <span style={{ color: '#f97316' }} className="font-semibold">React</span>, <span style={{ color: '#f97316' }} className="font-semibold">Node.js</span>, <span style={{ color: '#06b6d4' }} className="font-semibold">Python/Flask</span>, <span style={{ color: '#06b6d4' }} className="font-semibold">MongoDB</span>, and more. I've built and deployed 20+ live projects across domains — healthcare, hospitality, e-commerce, and beyond.
+                        <p className="text-lg leading-relaxed mb-10" style={{ color: 'var(--text-muted)' }}>
+                            My stack spans <span style={{ color: 'var(--primary)' }} className="font-semibold">React</span>, <span style={{ color: 'var(--primary)' }} className="font-semibold">Node.js</span>, <span style={{ color: 'var(--secondary)' }} className="font-semibold">Python/Flask</span>, <span style={{ color: 'var(--secondary)' }} className="font-semibold">MongoDB</span>, and more. I've built and deployed 20+ live projects across domains — healthcare, hospitality, e-commerce, and beyond.
                         </p>
 
                         {/* Stats grid */}
@@ -86,9 +82,9 @@ const About = () => {
                                     className="glass rounded-xl p-4 text-center"
                                     style={{ border: '1px solid rgba(249,115,22,0.15)' }}
                                 >
-                                    <Icon size={20} className="mx-auto mb-2" style={{ color: '#f97316' }} />
+                                    <Icon size={20} className="mx-auto mb-2" style={{ color: 'var(--primary)' }} />
                                     <p className="text-2xl font-black gradient-text">{value}</p>
-                                    <p className="text-xs mt-1" style={{ color: 'rgba(255,255,255,0.4)' }}>{label}</p>
+                                    <p className="text-xs mt-1" style={{ color: 'var(--text-muted)' }}>{label}</p>
                                 </motion.div>
                             ))}
                         </div>

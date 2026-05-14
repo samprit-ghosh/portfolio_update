@@ -33,7 +33,7 @@ const AdminLogin = () => {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center px-4 bg-dark grid-overlay">
+        <div className="min-h-screen flex items-center justify-center px-4 grid-overlay" style={{ background: 'var(--bg-main)' }}>
             <motion.div 
                 initial={{ opacity: 0, scale: 0.9, rotateX: 20 }}
                 animate={{ opacity: 1, scale: 1, rotateX: 0 }}
@@ -48,39 +48,41 @@ const AdminLogin = () => {
                     <div className="w-20 h-20 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6 border border-primary/20">
                         <Lock size={32} className="text-primary" />
                     </div>
-                    <h1 className="text-3xl font-black mb-2">Admin Portal</h1>
-                    <p className="text-gray-500">Secure access to your portfolio</p>
+                    <h1 className="text-3xl font-black mb-2" style={{ color: 'var(--text-main)' }}>Admin Portal</h1>
+                    <p style={{ color: 'var(--text-muted)' }}>Secure access to your portfolio</p>
                 </div>
 
 
 
                 <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="space-y-2">
-                        <label className="block text-sm font-bold text-gray-400 uppercase tracking-widest">Username</label>
+                        <label className="block text-sm font-bold uppercase tracking-widest" style={{ color: 'var(--text-muted)' }}>Username</label>
                         <div className="relative">
                             <UserIcon className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-600" size={18} />
-                            <input
-                                type="text"
-                                required
-                                className="w-full bg-white/5 border border-white/10 rounded-xl pl-12 pr-4 py-4 focus:ring-2 focus:ring-primary outline-none transition-all"
-                                value={credentials.username}
-                                onChange={(e) => setCredentials({ ...credentials, username: e.target.value })}
-                                placeholder="Enter admin username"
-                            />
+                             <input
+                                 type="text"
+                                 required
+                                 className="w-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-xl pl-12 pr-4 py-4 focus:ring-2 focus:ring-primary outline-none transition-all"
+                                 style={{ color: 'var(--text-main)' }}
+                                 value={credentials.username}
+                                 onChange={(e) => setCredentials({ ...credentials, username: e.target.value })}
+                                 placeholder="Enter admin username"
+                             />
                         </div>
                     </div>
                     <div className="space-y-2">
-                        <label className="block text-sm font-bold text-gray-400 uppercase tracking-widest">Password</label>
+                        <label className="block text-sm font-bold uppercase tracking-widest" style={{ color: 'var(--text-muted)' }}>Password</label>
                         <div className="relative">
                             <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-600" size={18} />
-                            <input
-                                type={showPassword ? "text" : "password"}
-                                required
-                                className="w-full bg-white/5 border border-white/10 rounded-xl pl-12 pr-12 py-4 focus:ring-2 focus:ring-primary outline-none transition-all"
-                                value={credentials.password}
-                                onChange={(e) => setCredentials({ ...credentials, password: e.target.value })}
-                                placeholder="••••••••"
-                            />
+                             <input
+                                 type={showPassword ? "text" : "password"}
+                                 required
+                                 className="w-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 rounded-xl pl-12 pr-12 py-4 focus:ring-2 focus:ring-primary outline-none transition-all"
+                                 style={{ color: 'var(--text-main)' }}
+                                 value={credentials.password}
+                                 onChange={(e) => setCredentials({ ...credentials, password: e.target.value })}
+                                 placeholder="••••••••"
+                             />
                             <button
                                 type="button"
                                 onClick={() => setShowPassword(!showPassword)}

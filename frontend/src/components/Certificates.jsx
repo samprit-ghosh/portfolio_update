@@ -9,7 +9,7 @@ const Certificates = () => {
     if (!certificates || certificates.length === 0) return null;
 
     return (
-        <section id="certificates" className="py-28 relative overflow-hidden" style={{ background: '#080c10' }}>
+        <section id="certificates" className="py-28 relative overflow-hidden" style={{ background: 'var(--bg-main)' }}>
             {/* Background elements */}
             <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-20">
                 <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px]" />
@@ -20,7 +20,7 @@ const Certificates = () => {
                 <div className="text-center mb-16">
                     <div className="section-pill mx-auto w-fit">Achievements</div>
                     <h2 className="text-3xl md:text-5xl font-black">Professional <span className="gradient-text">Certificates</span></h2>
-                    <p className="mt-4 max-w-xl mx-auto text-sm md:text-base text-white/50">
+                    <p className="mt-4 max-w-xl mx-auto text-sm md:text-base" style={{ color: 'var(--text-muted)' }}>
                         Formal recognitions and certifications I've earned throughout my career.
                     </p>
                 </div>
@@ -40,10 +40,10 @@ const Certificates = () => {
                                     <Award size={24} />
                                 </div>
                                 <div className="flex-1 min-w-0">
-                                    <h3 className="text-lg font-bold text-white mb-1 group-hover:text-primary transition-colors truncate">
+                                    <h3 className="text-lg font-bold mb-1 group-hover:text-primary transition-colors truncate" style={{ color: 'var(--text-main)' }}>
                                         {cert.name}
                                     </h3>
-                                    <p className="text-xs text-white/40 font-medium mb-4 flex items-center gap-1.5">
+                                    <p className="text-xs font-medium mb-4 flex items-center gap-1.5" style={{ color: 'var(--text-muted)', opacity: 0.8 }}>
                                         <FileText size={12} className="text-secondary" />
                                         {cert.issuer || 'Verified Credential'} • {cert.date || 'Valid'}
                                     </p>

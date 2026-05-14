@@ -1,9 +1,9 @@
-import React, { Suspense, useRef, useMemo } from 'react';
+import React, { Suspense, useRef, useMemo, useState, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Torus, MeshDistortMaterial, Float, Sparkles, Stars, PerspectiveCamera } from '@react-three/drei';
 import { motion, useScroll, useTransform, useSpring, useMotionValue } from 'framer-motion';
 
-function AnimatedTorus() {
+function AnimatedTorus({ color, emissive }) {
     const meshRef = useRef();
     useFrame(({ clock }) => {
         if (meshRef.current) {
@@ -15,8 +15,8 @@ function AnimatedTorus() {
         <Float speed={3} rotationIntensity={0.6} floatIntensity={1.5}>
             <Torus ref={meshRef} args={[1.8, 0.5, 120, 240]}>
                 <MeshDistortMaterial
-                    color="#f97316"
-                    emissive="#ea580c"
+                    color={color}
+                    emissive={emissive}
                     emissiveIntensity={0.4}
                     distort={0.5}
                     speed={2.5}
@@ -53,6 +53,26 @@ const TitleWord = ({ word, index }) => {
 
 const Hero = () => {
     const containerRef = useRef(null);
+    const [isDark, setIsDark] = useState(document.documentElement.classList.contains('dark'));
+    
+    useEffect(() => {
+        const observer = new MutationObserver(() => {
+            setIsDark(document.documentElement.classList.contains('dark'));
+        });
+        observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+        return () => observer.disconnect();
+    }, []);
+
+    const themeColors = isDark ? {
+        primary: '#f97316',
+        secondary: '#06b6d4',
+        emissive: '#ea580c'
+    } : {
+        primary: '#3b82f6',
+        secondary: '#8b5cf6',
+        emissive: '#2563eb'
+    };
+
     const { scrollYProgress } = useScroll({
         target: containerRef,
         offset: ["start start", "end start"]
@@ -90,7 +110,7 @@ const Hero = () => {
             ref={containerRef}
             onMouseMove={handleMouseMove}
             className="relative h-[125vh] md:h-screen flex items-start md:items-center justify-center overflow-hidden grid-overlay" 
-            style={{ background: '#080c10' }}
+            style={{ background: 'var(--bg-main)' }}
         >
             {/* 3D Canvas Background */}
             <div className="absolute inset-0 z-0">
@@ -98,12 +118,12 @@ const Hero = () => {
                     <PerspectiveCamera makeDefault position={[0, 0, 8]} fov={50} />
                     <Suspense fallback={null}>
                         <ambientLight intensity={0.4} />
-                        <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={2} color="#f97316" castShadow />
-                        <pointLight position={[-10, -10, -10]} intensity={1} color="#06b6d4" />
+                        <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={2} color={themeColors.primary} castShadow />
+                        <pointLight position={[-10, -10, -10]} intensity={1} color={themeColors.secondary} />
                         
-                        <AnimatedTorus />
+                        <AnimatedTorus color={themeColors.primary} emissive={themeColors.emissive} />
                         
-                        <Sparkles count={80} scale={10} size={1.5} speed={0.4} color="#f97316" opacity={0.3} />
+                        <Sparkles count={80} scale={10} size={1.5} speed={0.4} color={themeColors.primary} opacity={0.3} />
                         <Stars radius={100} depth={50} count={3000} factor={4} saturation={0} fade speed={1} />
                         
                         <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.5} />
@@ -113,8 +133,8 @@ const Hero = () => {
 
             {/* Cinematic Glows */}
             <div className="absolute top-0 left-0 w-full h-full pointer-events-none overflow-hidden">
-                <div className="absolute -top-[10%] -left-[10%] w-[50%] h-[50%] rounded-full opacity-30 blur-[120px]" style={{ background: 'radial-gradient(circle, #f97316 0%, transparent 70%)' }} />
-                <div className="absolute -bottom-[10%] -right-[10%] w-[50%] h-[50%] rounded-full opacity-20 blur-[120px]" style={{ background: 'radial-gradient(circle, #06b6d4 0%, transparent 70%)' }} />
+                <div className="absolute -top-[10%] -left-[10%] w-[50%] h-[50%] rounded-full opacity-30 blur-[120px]" style={{ background: `radial-gradient(circle, ${themeColors.primary} 0%, transparent 70%)` }} />
+                <div className="absolute -bottom-[10%] -right-[10%] w-[50%] h-[50%] rounded-full opacity-20 blur-[120px]" style={{ background: `radial-gradient(circle, ${themeColors.secondary} 0%, transparent 70%)` }} />
             </div>
 
             {/* Content */}
@@ -137,12 +157,12 @@ const Hero = () => {
                     className="group mx-auto mb-8 w-fit"
                     style={{ transform: 'translateZ(50px)' }}
                 >
-                    <div className="section-pill flex items-center gap-3 px-5 py-2.5 glass border-primary/20 hover:border-primary/40 transition-colors duration-300">
+                    <div className="section-pill flex items-center gap-3 px-5 py-2.5 bg-white/80 dark:bg-white/5 dark:backdrop-blur-sm border-primary/20 hover:border-primary/40 transition-colors duration-300">
                         <span className="relative flex h-2 w-2">
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
                         </span>
-                        <span className="text-[10px] md:text-xs font-bold tracking-[0.2em] text-white/80 group-hover:text-white transition-colors">
+                        <span className="text-[10px] md:text-xs font-bold tracking-[0.2em] group-hover:text-primary transition-colors" style={{ color: 'var(--text-main)' }}>
                             AVAILABLE FOR NEW PROJECTS
                         </span>
                     </div>
@@ -178,11 +198,10 @@ const Hero = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 1.2, duration: 0.8 }}
-                    className="text-sm md:text-lg lg:text-xl max-w-3xl mx-auto leading-relaxed mb-12 md:mb-16 text-white/50 px-4 font-light"
-                    style={{ transform: 'translateZ(40px)' }}
+                    className="text-sm md:text-lg lg:text-xl max-w-3xl mx-auto leading-relaxed mb-12 md:mb-16 px-4 font-bold"
+                    style={{ transform: 'translateZ(40px)', color: 'var(--text-main)' }}
                 >
-                    Crafting <span className="text-white font-medium">high-performance</span> digital experiences with 
-                    <span className="text-white font-medium"> precision</span> and <span className="text-white font-medium">purpose</span>. 
+                    Crafting high-performance digital experiences with precision and purpose. 
                     Specializing in robust full-stack architectures and pixel-perfect interfaces.
                 </motion.p>
 
@@ -217,14 +236,14 @@ const Hero = () => {
                 transition={{ delay: 2.5, duration: 1 }}
                 className="absolute bottom-8 md:bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
             >
-                <div className="w-[24px] h-[40px] md:w-[30px] md:h-[50px] rounded-full border-2 border-white/10 flex justify-center p-1.5 md:p-2">
+                <div className="w-[24px] h-[40px] md:w-[30px] md:h-[50px] rounded-full border-2 flex justify-center p-1.5 md:p-2" style={{ borderColor: 'var(--border-subtle)' }}>
                     <motion.div 
                         animate={{ y: [0, 12, 0] }}
                         transition={{ repeat: Infinity, duration: 2 }}
                         className="w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-primary"
                     />
                 </div>
-                <span className="text-[8px] md:text-[10px] tracking-[0.3em] uppercase text-white/30 font-bold">Scroll Down</span>
+                <span className="text-[8px] md:text-[10px] tracking-[0.3em] uppercase font-bold" style={{ color: 'var(--text-muted)', opacity: 0.5 }}>Scroll Down</span>
             </motion.div>
 
             {/* Side Indicators (Desktop Only) */}
